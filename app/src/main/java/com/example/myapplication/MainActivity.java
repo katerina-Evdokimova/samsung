@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.a2048.MainActivity_2048;
 import com.example.myapplication.dataBase.HotelContract;
 import com.example.myapplication.dataBase.HotelDbHelper;
 import com.instabug.library.Instabug;
@@ -148,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         mediaPlayer.release();
+        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+        startActivity(intent);
         finish();
     }
 

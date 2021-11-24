@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity"
+        <activity android:name=".MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +18,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MainActivity">
+        </activity>
+        <activity
             android:name=".SecondActivity">
+        </activity>
+        <activity
+            android:name=".a2048.MainActivity_2048">
         </activity>
     </application>
 

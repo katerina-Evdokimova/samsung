@@ -9,6 +9,8 @@ import android.os.Message;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,11 +25,15 @@ public class SecondActivity extends AppCompatActivity {
 
     private HotelDbHelper mDbHelper;
     private SnakeView mSnakeView;
+    SimpleCursorAdapter userAdapter;
+    ListView userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        userList = findViewById(R.id.listArr);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mDbHelper = new HotelDbHelper(this);
@@ -40,7 +46,6 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     @Override
@@ -54,7 +59,6 @@ public class SecondActivity extends AppCompatActivity {
 
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
         TextView textView = (TextView) findViewById(R.id.prov);
-
         // Зададим условие для выборки - список столбцов
         String[] projection = {
                 HotelContract.Score._ID,
@@ -72,28 +76,16 @@ public class SecondActivity extends AppCompatActivity {
                 null);
 
         try {
-            textView.setText("У вас было - " + cursor.getCount() + " игр.\n\n");
+            textView.setText("У Вас было - " + cursor.getCount() + " игр.\n\n");
             textView.append(HotelContract.Score.COLUMN_STATUS + " | " +
                     HotelContract.Score.COLUMN_SCORE + " | " + "\n");
-            // Узнаем индекс каждого столбца
-            int idColumnIndex = cursor.getColumnIndex(HotelContract.Score._ID);
-            int statusColumnIndex = cursor.getColumnIndex(HotelContract.Score.COLUMN_STATUS);
-            int nameColumnIndex = cursor.getColumnIndex(HotelContract.Score.COLUMN_SCORE);
 
+            String[] headers = new String[] {HotelContract.Score.COLUMN_STATUS, HotelContract.Score.COLUMN_SCORE};
 
-            // Проходим через все ряды
-            //cursor.moveToPosition(cursor.getCount() - 10);
-            while (cursor.moveToNext()) {
-                // Используем индекс для получения строки или числа
-                String currentStatus = cursor.getString(statusColumnIndex);
-                String currentName = cursor.getString(nameColumnIndex);
-                // Выводим значения каждого столбца
-                textView.append(("\n" + currentStatus + " | " +
-                        currentName + " | "));
-            }
+            userAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
+                    cursor, headers, new int[]{android.R.id.text1, android.R.id.text2}, 0);
+            userList.setAdapter(userAdapter);
         } finally {
-            // Всегда закрываем курсор после чтения
-            cursor.close();
         }
     }
 
