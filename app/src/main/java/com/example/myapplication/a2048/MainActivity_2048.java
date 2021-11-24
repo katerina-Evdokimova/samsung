@@ -33,7 +33,7 @@ public class MainActivity_2048 extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_2048);
 
         Score = (TextView) findViewById(R.id.Score);
         maxScore = (TextView) findViewById(R.id.maxScore);

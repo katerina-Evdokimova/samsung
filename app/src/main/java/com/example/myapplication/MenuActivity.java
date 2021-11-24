@@ -26,16 +26,14 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, MainActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
         ImageButton button1 = (ImageButton) findViewById(R.id.knopka);
-        button.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, MainActivity_2048.class);
                 startActivity(intent);
-                finish();
             }
         });
 
