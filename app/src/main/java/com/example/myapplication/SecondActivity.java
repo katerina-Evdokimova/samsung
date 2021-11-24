@@ -46,6 +46,15 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
             }
         });
+        ImageButton button1 = (ImageButton) findViewById(R.id.menu_btn);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SecondActivity.this, MenuActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override

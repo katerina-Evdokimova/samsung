@@ -11,7 +11,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.MenuActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.SecondActivity;
 
 
 public class MainActivity_2048 extends Activity {
@@ -76,9 +78,7 @@ public class MainActivity_2048 extends Activity {
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addCategory(Intent.CATEGORY_HOME);
+                Intent intent = new Intent(MainActivity_2048.this, MenuActivity.class);
                 startActivity(intent);
             }
         });
