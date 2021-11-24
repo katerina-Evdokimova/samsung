@@ -121,28 +121,9 @@ public class MainActivity_2048 extends Activity {
 
     @Override
     public void onBackPressed() {
-        createExitTipDialog();
+        Intent intent = new Intent(MainActivity_2048.this, MenuActivity.class);
+        startActivity(intent);
     }
 
-    private void createExitTipDialog() {
-        new AlertDialog.Builder(MainActivity_2048.this)
-                .setMessage("Czy napewno chcesz to zrobic ?")
-                .setTitle("Wskazowka")
-                .setIcon(R.drawable.tip)
-                .setPositiveButton("Potwierdź", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        finish();
-                    }
-                })
-                .setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                })
-                .show();
-    }
 
 }

@@ -41,7 +41,7 @@ public class SnakeView extends View {
     //победа или поражение - при 5 успешных съедениях появляется дверь выхода
     public boolean win = false;
     public boolean lose = false;
-    private int winSize = 2;
+    private int winSize = 4;
 
     //Arraylist содержит точку тела змеи
     private ArrayList<Point> mSnakeList = new ArrayList<>();

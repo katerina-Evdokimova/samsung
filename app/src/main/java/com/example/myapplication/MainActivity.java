@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     /*
     Обработчик будет посылать сообщение в поток UI во время работы игры.
     Если сообщение содержит целочисленную переменную REFRESH и SnakeView уже создан, метод
-    invalidate() вытащит старый вид и повторно запустит метод onDraw() в SnakeView, чтобы отрисовать
+    invalidate() вытащить старый вид и повторно запустит метод onDraw() в SnakeView, чтобы отрисовать
     все элементы на экране снова
      */
     private Handler mHandler = new Handler(){
